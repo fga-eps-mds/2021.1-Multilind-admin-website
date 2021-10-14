@@ -1,7 +1,11 @@
+import { Routes } from './routes'
+import { AuthContextProvider } from './context'
 
 function App () {
   return (
-    <h1>Admin painel</h1>
+    <AuthContextProvider>
+      <Routes />
+    </AuthContextProvider>
   )
 }
 
