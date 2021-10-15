@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useAuth } from '../../context'
+import { Redirect } from 'react-router-dom'
 
 const loginSchema = yup.object({
   email: yup.string().email('email inválido').required('campo obrigatório'),
@@ -13,11 +14,15 @@ export function Login () {
     resolver: yupResolver(loginSchema)
   })
 
-  const { signIn } = useAuth()
+  const { signIn, isLogged } = useAuth()
 
   const onSubmit = async data => {
     await signIn(data)
     reset()
+  }
+
+  if (isLogged) {
+    return <Redirect to="/"/>
   }
 
   return (

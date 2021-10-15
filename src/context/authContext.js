@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from 'react'
+import { createContext, useContext } from 'react'
 import { usePersistentState } from '../hooks'
 import { AuthService } from '../services'
 
@@ -8,19 +8,13 @@ const AuthContext = createContext()
 export function AuthContextProvider ({ children }) {
   const [user, setUser] = usePersistentState('@auth:user', null)
 
-  useEffect(() => {
-    if (!user) {
-      setUser({ teste: 'teste' })
-    }
-  }, [])
-
   const signIn = async (userCredentials) => {
     const response = await AuthService.login(userCredentials)
-    console.log(response)
+    setUser(response)
   }
 
   return (
-        <AuthContext.Provider value={{ isLogged: false, signIn }}>
+        <AuthContext.Provider value={{ user, isLogged: !!user, signIn }}>
             {children}
         </AuthContext.Provider>
   )
