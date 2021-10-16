@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react'
 import { usePersistentState } from '../hooks'
 import { AuthService } from '../services'
+import { nomalizeAuthRespose } from '../helpers'
 
 const AuthContext = createContext()
 
@@ -10,7 +11,7 @@ export function AuthContextProvider ({ children }) {
 
   const signIn = async (userCredentials) => {
     const response = await AuthService.login(userCredentials)
-    setUser(response)
+    setUser(nomalizeAuthRespose(response))
   }
 
   return (

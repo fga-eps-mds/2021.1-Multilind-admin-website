@@ -1,3 +1,6 @@
+import { useAuth } from '../../context'
+
 export function Home () {
-  return <h1>Home</h1>
+  const { user } = useAuth()
+  return <h1>{user.name}</h1>
 }
