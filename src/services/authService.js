@@ -15,7 +15,8 @@ export class AuthService {
     return apiAuth.post('/create', userCredentials)
   }
 
-  static async refresh () {
-    return apiAuth.post('/refresh')
+  static async refresh (data) {
+    const reponse = await apiAuth.post('/refresh', data)
+    return reponse.data
   }
 }
