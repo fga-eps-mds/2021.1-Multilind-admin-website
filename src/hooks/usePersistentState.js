@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
-
+import { OfflineStorageService } from '../services'
 export function usePersistentState (key, initalValue) {
   const [value, setValue] = useState(initalValue)
 
   useEffect(() => {
-    const storagedValue = localStorage.getItem(key)
+    const storagedValue = OfflineStorageService.getItem(key)
     if (storagedValue) {
-      setValue(JSON.parse(storagedValue))
+      setValue(storagedValue)
     }
   }, [])
 
   const setPersistentState = (newValue) => {
-    localStorage.setItem(key, JSON.stringify(newValue))
+    OfflineStorageService.setItem(key, newValue)
     setValue(newValue)
   }
 
   const checkPersistentState = () => {
-    const storagedValue = localStorage.getItem(key)
+    const storagedValue = OfflineStorageService.getItem(key)
     if (storagedValue) {
       return true
     }
