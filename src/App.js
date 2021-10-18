@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import { Routes } from './routes'
+import { useAuth } from './context'
+import { useUpdateEffect } from './hooks'
+import {
+  apiAuth,
+  apiContent,
+  setUpInterceptorResponse,
+  removeInterceptorResponse,
+  removeInterceptorRequest,
+  setUpInterceptorRequest
+} from './config'
 
-function App() {
+function App () {
+  const { isLogged } = useAuth()
+
+  useEffect(() => {
+    setUpInterceptorResponse(apiAuth)
+    setUpInterceptorResponse(apiContent)
+    setUpInterceptorRequest(apiContent)
+  }, [])
+
+  useUpdateEffect(() => {
+    if (!isLogged) {
+      removeInterceptorResponse(apiAuth)
+      removeInterceptorResponse(apiContent)
+      removeInterceptorRequest(apiContent)
+    }
+  }, [isLogged])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Routes />
+  )
 }
 
-export default App;
+export default App
