@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.card {
+    //padding: 2rem 4rem 4rem 4rem;
+    width: 90vw;
+    height: 752;
+    width: 664;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .Header-screen{
+        text-align: center;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 32px;
+    }
+    form {
+        width: 100%;
+        .field {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    img {
+        width: 8rem;
+    }
+    .obs-localidade {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        text-align: justify;
+    }
+    h3 {
+        padding: 0.3rem 0;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 32px;
+        text-align: justify;
+    }
+    .lingua-input{
+        margin-bottom: 14;
+    }
+    label {
+        font-size: 1.2rem;
+    }
+    .button-primary{
+        width: 394px;
+        height: 50px;
+    }
+}
