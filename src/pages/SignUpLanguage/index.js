@@ -1,10 +1,9 @@
 import { Card } from '../../components'
-import { ContentLanguageService } from '../../services'
-import { useEffect, useState } from 'react'
+import { useLanguage } from '../../context'
 import './styles.scss'
 
 export function SignUpLanguage () {
-  const [lang, setlang] = useState([])
+  const { languages } = useLanguage()
 
   useEffect(() => {
     const response = async () => {

@@ -4,13 +4,15 @@ import App from './App'
 import './styles/global.scss'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AuthContextProvider } from './context'
+import { AuthContextProvider, LanguageContextProvider } from './context'
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <ToastContainer />
-      <App />
+      <LanguageContextProvider>
+        <ToastContainer />
+        <App />
+      </LanguageContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
