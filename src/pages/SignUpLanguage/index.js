@@ -1,22 +1,25 @@
+import Select from 'react-select'
 import { Card } from '../../components'
 import { useLanguage } from '../../context'
+// import { useState } from 'react'
 import './styles.scss'
 
 export function SignUpLanguage () {
   const { languages } = useLanguage()
+  // const [input, setInput] = useState('')
+  console.log(languages)
 
-  useEffect(() => {
-    const response = async () => {
-      const data = await ContentLanguageService.getAllLanguages()
-      setlang(data)
-    }
-    response()
-  }, [])
-  console.log(lang)
+  const list = languages
+    .map((language) => ({ label: language.nome, value: language.id_lingua }))
+
   return (
     <div className="container">
       <Card className="card">
         <form className="form">
+          <div className="pageOfRegister">
+            <span className="dot"/>
+            <span className="dot"/>
+          </div>
           <h2 className="Header-screen">Cadastro Língua</h2>
           <div className="input-language-fields">
             <label className="label-class-language">Nome da Língua</label>
@@ -32,7 +35,13 @@ export function SignUpLanguage () {
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Família Linguística</label>
-            <input className="input-language-screen"></input>
+            <Select
+              className="input-language-screen"
+              classNamePrefix="select"
+              isSearchable={() => true}
+              name="color"
+              options={list}
+            />
           </div>
           <button className="button-next-page button-primary">{'Próxima'}</button>
         </form>
