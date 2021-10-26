@@ -4,10 +4,6 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    .pageOfRegister{
-        text-align:center;
-        
-    }
 }
 
 .card {
@@ -69,5 +65,14 @@
         width: 1rem;
         background-color: #338CAF;
         border-radius: 50%;
+        display: inline-flex;
+        position: absolute;
     }
+    .searchbar-styles {
+        position: absolute;
+    }
+}
+.pageOfRegister{
+    text-align:center;
+    
 }
