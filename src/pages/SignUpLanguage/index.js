@@ -1,14 +1,11 @@
-// import Select from 'react-select'
 import Fuse from 'fuse.js'
 import SelectSearch from 'react-select-search'
 import { Card } from '../../components'
 import { useLanguage } from '../../context'
-// import { useState } from 'react'
 import './styles.scss'
 
 export function SignUpLanguage () {
   const { languages } = useLanguage()
-  // const [input, setInput] = useState('')
   console.log(languages)
 
   const list = languages
@@ -37,16 +34,8 @@ export function SignUpLanguage () {
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Família Linguística</label>
-            {/* <Select
-              className="input-language-screen"
-              classNamePrefix="input-language-screen"
-              isSearchable={() => true}
-              name="color"
-              options={list}
-            /> */}
             <SelectSearch
               options={list}
-              placeholder="Choose your language"
               search
               filterOptions={
                 (options) => {
@@ -62,7 +51,7 @@ export function SignUpLanguage () {
                   }
                 }
               }
-              // className="searchbar-styles"
+              className="select-search"
             />
           </div>
           <button className="button-next-page button-primary">{'Próxima'}</button>
