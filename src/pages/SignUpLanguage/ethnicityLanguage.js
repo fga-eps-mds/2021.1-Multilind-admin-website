@@ -1,13 +1,10 @@
 import Fuse from 'fuse.js'
 import SelectSearch from 'react-select-search'
 import { Card } from '../../components'
-// import { useLanguage } from '../../context'
 import './styles.scss'
 import './stylesEth.scss'
 
 export function EthnicityLanguage () {
-  // const { languages } = useLanguage()
-
   return (
     <div className="container">
       <Card className="card">
@@ -56,7 +53,7 @@ export function EthnicityLanguage () {
               className="select-search"
             />
           </div>
-          <button className="button-next-page button-primary button-go">{'Próxima'}</button>
+          <button className="button-next-page button-primary button-go">{'Salvar'}</button>
         </form>
       </Card>
     </div>
