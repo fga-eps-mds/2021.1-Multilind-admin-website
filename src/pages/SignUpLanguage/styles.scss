@@ -6,8 +6,8 @@
     width: 100vw;
 }
 
-.card {
-    height: 84vh;
+.card-language {
+    min-height: 84vh;
     width: 55vw;
     display: flex;
     align-items: flex-start;
@@ -58,15 +58,30 @@
         font-weight: 31.25rem;
     }
     .input-language-screen{
-        margin-top: 3.16vh;
         font-size:1rem;
+    }
+    .space-between-components{
+        margin-top: 3.16vh;
     }
     .dot {
         height: 1rem;
         width: 1rem;
         background-color: #338CAF;
         border-radius: 50%;
-        text-align:center;
+    }
+    .dot-cinza {
+        height: 1rem;
+        width: 1rem;
+        background-color: gray;
+        border-radius: 50%;
+        margin-bottom: 20%;
+    }
+    .dot-container{
+        width: 10%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        margin: 0 auto;
     }
     .searchbar-styles {
         position: absolute;
@@ -294,14 +309,15 @@
 /* Styles for selected tags */
 .ReactTags__selected span.ReactTags__tag {
   border: 1px solid #ddd;
-  background: #63bcfd;
+  background: #338CAF;
   text-align: center;
-  color: black;
+  color: white;
   font-size: 12px;
-  display: inline-block;
-  padding: 0.1px;
+  display: inline-flex;
+  align-items:center;
+  padding: 0 5px;
   margin: 0 5px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 .ReactTags__selected a.ReactTags__remove {
   color: #aaa;
@@ -310,6 +326,7 @@
 }
 
 .ReactTags__remove {
+    width: 25px;
     border: none;
     cursor: pointer;
     background: none;

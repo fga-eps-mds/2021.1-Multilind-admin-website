@@ -8,7 +8,7 @@ export function Routes () {
             <Switch>
                 <PrivateRoute component={Home} exact path="/" />
                 <Route component={EthnicityLanguage} path="/langEth"/>
-                <Route component={SignUpLanguage} exact path="/lang" />
+                <Route component={SignUpLanguage} path="/lang" />
                 <Route component={Login} path="/login" />
             </Switch>
         </BrowserRouter>
