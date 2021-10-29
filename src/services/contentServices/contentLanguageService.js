@@ -6,8 +6,8 @@ export class ContentLanguageService {
     return response.data
   }
 
-  static async createLanguage () {
-    const response = await apiContent.post('lingua')
+  static async createLanguage (body) {
+    const response = await apiContent.post('lingua', body)
     return response.data
   }
 

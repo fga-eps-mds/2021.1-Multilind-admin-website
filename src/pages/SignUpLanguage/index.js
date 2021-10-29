@@ -35,7 +35,7 @@ export function SignUpLanguage () {
     history.push('/langEth', data)
     reset()
   }
-  const list = trunks.map((trunk) => ({ name: trunk.nome, value: trunk.id_tronco }))
+  const list = trunks.map((trunk) => ({ name: trunk.nome, value: trunk.nome }))
   const handleDelete = i => {
     const result = tags.filter((tag, index) => index !== i)
     setTags(result)
@@ -73,16 +73,19 @@ export function SignUpLanguage () {
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Localidade(s) da língua</label>
-            <div className="space-between-components"></div>
-            <ReactTags
-              tags={tags}
-              placeholder="-2.43274, -46.71387"
-              handleDelete={handleDelete}
-              handleAddition={handleAddition}
-              handleDrag={handleDrag}
-              inputFieldPosition="top"
-              autocomplete
-            />
+            <div className="space-between-components row">
+              <div className="infos">
+              <ReactTags
+                tags={tags}
+                placeholder="-2.43274, -46.71387"
+                handleDelete={handleDelete}
+                handleAddition={handleAddition}
+                handleDrag={handleDrag}
+                inputFieldPosition="top"
+                autocomplete
+              />
+              </div>
+            </div>
             <label className="obs-localidade">
               O valor deve ser informado em coordenadas e possuir fomato [latitude],
             [longitude]

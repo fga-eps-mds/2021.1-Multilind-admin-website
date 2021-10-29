@@ -50,12 +50,18 @@
     }
     .input-language-fields{
         padding-bottom:3.77vh;
+        width: 100%;
     }
     .button-next-page{
         width: 50%;
         margin-left:25.5%;
         font-size:1.375rem;
         font-weight: 31.25rem;
+    }
+    .input-location{
+        width:100%;
+        display: inline-flex;
+        flex-direction:row
     }
     .input-language-screen{
         font-size:1rem;
@@ -68,6 +74,11 @@
         width: 1rem;
         background-color: #338CAF;
         border-radius: 50%;
+    }
+    .dotAdd{
+        height: 2rem;
+        width: 2rem;
+        margin-left: 40%;
     }
     .dot-cinza {
         height: 1rem;
@@ -294,7 +305,8 @@
 .ReactTags__tagInput {
     width: 100%;
     border-radius: 2px;
-    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
 }
 .ReactTags__tagInput input.ReactTags__tagInputField,
 .ReactTags__tagInput input.ReactTags__tagInputField:focus {
@@ -316,8 +328,7 @@
   display: inline-flex;
   align-items:center;
   padding: 0 5px;
-  margin: 0 5px;
-  border-radius: 15px;
+  border-radius: 50px;
 }
 .ReactTags__selected a.ReactTags__remove {
   color: #aaa;
