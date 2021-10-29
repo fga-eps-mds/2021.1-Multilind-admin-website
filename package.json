@@ -17,6 +17,8 @@
     "loadsh": "^0.0.4",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.17.4",
     "react-router-dom": "^5.3.0",
