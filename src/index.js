@@ -2,21 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import './styles/global.scss'
+import { ContentProvider } from './helpers'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AuthContextProvider, LanguageContextProvider, TrunkContextProvider, EthnicityContextProvider } from './context'
+import { AuthContextProvider } from './context'
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <EthnicityContextProvider>
-        <TrunkContextProvider>
-          <LanguageContextProvider>
+      <ContentProvider>
             <ToastContainer />
             <App />
-          </LanguageContextProvider>
-        </TrunkContextProvider>
-      </EthnicityContextProvider>
+      </ContentProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
