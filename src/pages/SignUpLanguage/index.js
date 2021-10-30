@@ -2,13 +2,13 @@ import * as yup from 'yup'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { fuseSearch } from '../../utils'
 import { WithContext as ReactTags } from 'react-tag-input'
-import SelectSearch from 'react-select-search'
+import CreatableSelect from 'react-select/creatable'
+import Styles from './styles/customStylesSelect'
 import { Card } from '../../components'
 import { useTrunk } from '../../context'
 import { useHistory } from 'react-router-dom'
-import './styles.scss'
+import './styles/styles.scss'
 
 const signUpSchema = yup
   .object({
@@ -20,7 +20,6 @@ export function SignUpLanguage () {
   const [selected, setSelected] = useState(null)
   const [tags, setTags] = useState([])
   const history = useHistory()
-
   const {
     register,
     handleSubmit,
@@ -30,12 +29,13 @@ export function SignUpLanguage () {
     resolver: yupResolver(signUpSchema)
   })
   const onSubmit = async (data) => {
-    data.id_familia = selected
+    data.familia = selected
     data.localidades = tags
     history.push('/langEth', data)
     reset()
   }
-  const list = trunks.map((trunk) => ({ name: trunk.nome, value: trunk.nome }))
+
+  const list = trunks.map((trunk) => ({ value: trunk.id_tronco, label: trunk.nome }))
   const handleDelete = i => {
     const result = tags.filter((tag, index) => index !== i)
     setTags(result)
@@ -93,12 +93,13 @@ export function SignUpLanguage () {
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Família Linguística</label>
-            <SelectSearch
-              options={list}
-              search
-              filterOptions={fuseSearch}
-              className="select-search space-between-components"
+            <CreatableSelect
+              isClearable
               onChange={setSelected}
+              placeholder=""
+              className="select-search space-between-components"
+              options={list}
+              styles={Styles}
             />
           </div>
           <button className="button-primary button-next-page">{isSubmitting ? 'Carregando...' : 'Próxima'}</button>

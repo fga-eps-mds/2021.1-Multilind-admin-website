@@ -1,17 +1,12 @@
-import Fuse from 'fuse.js'
 import { useState } from 'react'
-import SelectSearch from 'react-select-search'
+import CreatableSelect from 'react-select/creatable'
 import { Card } from '../../components'
 import { useHistory, useLocation } from 'react-router-dom'
-import {
-  // ContentEthnicityService,
-  ContentLanguageService,
-  // ContentLocationService,
-  ContentTrunkService
-} from '../../services'
 import { useEthnicity } from '../../context'
-import './styles.scss'
-import './stylesEth.scss'
+import Styles from './styles/customStylesSelect'
+import createLanguage from './ServicesLanguage'
+import './styles/styles.scss'
+import './styles/stylesEth.scss'
 
 export function EthnicityLanguage () {
   const history = useHistory()
@@ -24,12 +19,10 @@ export function EthnicityLanguage () {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(data, selectedEth)
-    const { lingua } = data
-    await ContentLanguageService.createLanguage({ nome: lingua })
-    await ContentTrunkService.create()
+    data.ethnicities = selectedEth
+    await createLanguage(data)
   }
-  const list = Ethnicity.map(eth => ({ name: eth.nome, value: eth.id_etnia }))
+  const list = Ethnicity.map(eth => ({ value: eth.id_etnia, label: eth.nome }))
   return (
     <div className="container">
       <Card className="card-language">
@@ -40,30 +33,15 @@ export function EthnicityLanguage () {
           </div>
           <h2 className="Header-screen">Cadastro Língua</h2>
           <div className="input-language-fields select-go">
-            <label className="label-class-language">{`Etnia(s) que falam ${'qlq'}`}</label>
-            <SelectSearch
-              multiple
-              options={list}
-              search
-              closeOnSelect
-              filterOptions={
-                (options) => {
-                  const fuse = new Fuse(options, {
-                    keys: ['name', 'groupName', 'items.name'],
-                    threshold: 0.3
-                  })
-                  return (value) => {
-                    if (!value.length) {
-                      return options
-                    }
-                    return fuse.search(value)
-                  }
-                }
-              }
-              placeholder="Selecione as etnias"
-              printOptions="on-focus"
-              className="select-search"
+            <label className="label-class-language">{`Etnia(s) que falam ${data.lingua}`}</label>
+            <CreatableSelect
+              isClearable
               onChange={setSelectedEth}
+              placeholder=""
+              className="select-search space-between-components"
+              options={list}
+              styles={Styles}
+              isMulti
             />
           </div>
           <button type="submit" form={formId} className="button-next-page button-primary button-go">{'Salvar'}</button>
