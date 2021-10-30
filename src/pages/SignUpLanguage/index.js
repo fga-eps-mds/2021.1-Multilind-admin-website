@@ -43,7 +43,7 @@ export function SignUpLanguage () {
   const handleAddition = tag => {
     const cod = tag.text.split(',')
       .map(e => parseFloat(e.trim()))
-      .filter(cod => cod % 1 !== 0)
+      .filter(codFilter => codFilter % 1 !== 0)
 
     if (cod.length === 2) {
       const result = [...tags, tag]

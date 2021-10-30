@@ -48,7 +48,7 @@ const createLanguage = async (data) => {
       return eth.value
     }))
     await Promise.all(
-      idsEtnias.map(async id => await ContentDialetoService.create({
+      idsEtnias.map(async id => ContentDialetoService.create({
         id_lingua: languageCreated.id_lingua,
         id_etnia: id
       })))
