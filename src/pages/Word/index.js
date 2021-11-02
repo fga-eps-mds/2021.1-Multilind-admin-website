@@ -1,16 +1,20 @@
 import { useState } from 'react'
 import CreatableSelect from 'react-select/creatable'
 import { Card } from '../../components'
-// import { useHistory, useLocation } from 'react-router-dom'
-// import { useEthnicity } from '../../context'
 import Styles from './styles/customStylesSelect'
-// import createLanguage from './ServicesLanguage'
-// import './styles/styles.scss'
+import { useLocation } from 'react-router-dom'
+import { useLanguage } from '../../context'
+import submitWord from './ServiceWord'
 import './styles.scss'
 
 export function Word () {
   const [value, setValue] = useState([])
+  const location = useLocation()
   const [inputValue, setInputValue] = useState([])
+  const [selected, setSelected] = useState(null)
+  const formId = 'alguma coisa'
+  const { languages } = useLanguage()
+  const list = languages.map((lang) => ({ value: lang.id_lingua, label: lang.nome }))
 
   const createOption = (label) => ({
     label,
@@ -41,14 +45,25 @@ export function Word () {
     }
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    submitWord({ idLingua: selected.value, palavra:  })
+  }
+
   return (
     <div className='container label'>
       <Card className='card-language'>
-        <form className='form'>
+        <form className='form' id={formId} onSubmit={handleSubmit} >
           <h2 className="Header-screen">Cadastro Palavra</h2>
           <div className='div-lingua'>
             <label className="label-class-language">Nome da Língua</label>
-            <input className="space-between-components" />
+            <CreatableSelect
+              isClearable
+              onChange={setSelected}
+              placeholder=""
+              className="select-search space-between-components"
+              options={list}
+            >{console.log(selected, location)}</CreatableSelect>
             <p className="error"></p>
           </div>
           <div className='input-language-fields div-palavra'>
@@ -68,7 +83,7 @@ export function Word () {
               isMulti
             />
           </div>
-          <button type='submit' className='button-next-page button-primary button-go'>{'Salvar'}</button>
+          <button type='submit' form={formId} className='button-next-page button-primary button-go'>{'Salvar'}</button>
         </form>
       </Card>
     </div>

@@ -1,13 +1,13 @@
 import { ContentWordService } from '../../../services'
 
-const createWord = async (data) => {
-  const { palavra, lingua } = data
+const submitWord = async (data) => {
+  const { palavra, significado, idLingua } = data
 
   if (palavra) {
     if (palavra.__isNew__) {
-      ContentWordService.create(lingua.id_lingua, { nome: palavra.nome, significado: palavra.significado })
+      ContentWordService.createWord(idLingua, { nome: palavra, significado })
     }
   }
 }
 
-export default createWord
+export default submitWord
