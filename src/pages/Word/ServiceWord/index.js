@@ -2,11 +2,9 @@ import { ContentWordService } from '../../../services'
 
 const submitWord = async (data) => {
   const { palavra, significado, idLingua } = data
-
+  console.log(palavra, significado, idLingua)
   if (palavra) {
-    if (palavra.__isNew__) {
-      ContentWordService.createWord(idLingua, { nome: palavra, significado })
-    }
+    await ContentWordService.createWord({ id_lingua: idLingua, nome: palavra, significado })
   }
 }
 

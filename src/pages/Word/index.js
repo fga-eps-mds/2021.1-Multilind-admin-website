@@ -2,14 +2,12 @@ import { useState } from 'react'
 import CreatableSelect from 'react-select/creatable'
 import { Card } from '../../components'
 import Styles from './styles/customStylesSelect'
-import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../../context'
 import submitWord from './ServiceWord'
 import './styles.scss'
 
 export function Word () {
   const [value, setValue] = useState([])
-  const location = useLocation()
   const [inputValue, setInputValue] = useState([])
   const [selected, setSelected] = useState(null)
   const formId = 'alguma coisa'
@@ -36,7 +34,6 @@ export function Word () {
       case 'Tab':
         setInputValue('')
         if (!value.map((item) => item.label).includes(inputValue)) {
-          console.log(value.labe)
           setValue([...value, createOption(inputValue)])
         } else {
           alert('Palavra já adicionada')
@@ -45,9 +42,22 @@ export function Word () {
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    submitWord({ idLingua: selected.value, palavra:  })
+    const palavras = value.map((item) => {
+      item = item.value.split(',', 1)[0]
+      return item.includes(' ') ? item.replaceAll(' ', '') : item
+    })
+    const significados = value.map((item) => {
+      item = item.value.split(',', 2)[1]
+      return item.includes(' ') ? item.replaceAll(' ', '') : item
+    })
+
+    const data = { palavra: [...palavras], significado: [...significados], idLingua: selected.value }
+    // console.log(data.significado)
+    palavras.forEach(async (item, index) => {
+      await submitWord({ palavra: data.palavra[index], significado: data.significado[index], idLingua: data.idLingua })
+    })
   }
 
   return (
@@ -63,7 +73,7 @@ export function Word () {
               placeholder=""
               className="select-search space-between-components"
               options={list}
-            >{console.log(selected, location)}</CreatableSelect>
+            />
             <p className="error"></p>
           </div>
           <div className='input-language-fields div-palavra'>
