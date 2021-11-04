@@ -54,10 +54,12 @@ export function Word () {
     })
 
     const data = { palavra: [...palavras], significado: [...significados], idLingua: selected.value }
-    // console.log(data.significado)
     palavras.forEach(async (item, index) => {
       await submitWord({ palavra: data.palavra[index], significado: data.significado[index], idLingua: data.idLingua })
     })
+    alert('Palavra adicionada com sucesso')
+    setValue([])
+    setSelected(null)
   }
 
   return (
@@ -86,12 +88,13 @@ export function Word () {
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isClearable
-              placeholder='Palavra, Significado'
+              placeholder='Exemplo: Palavra, Significado'
               className='space-between-components'
               styles={Styles}
               menuIsOpen={false}
               isMulti
             />
+            <label className='obs-palavra'>{'Inserir palavra seguido de uma vírgula e seu significado. Exemplo: "palavra, significado"'}</label>
           </div>
           <button type='submit' form={formId} className='button-next-page button-primary button-go'>{'Salvar'}</button>
         </form>
