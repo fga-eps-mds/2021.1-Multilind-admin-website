@@ -8,7 +8,7 @@ const AuthContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 export function AuthContextProvider ({ children }) {
-  const [user, setUser] = usePersistentState(AUTH_USER_KEY, null)
+  const [user, setUser, checkUser] = usePersistentState(AUTH_USER_KEY, null)
 
   const signIn = async (userCredentials) => {
     const response = await AuthService.login(userCredentials)
@@ -16,7 +16,7 @@ export function AuthContextProvider ({ children }) {
   }
 
   return (
-        <AuthContext.Provider value={{ user, isLogged: !!user, signIn }}>
+        <AuthContext.Provider value={{ user, isLogged: checkUser(), signIn }}>
             {children}
         </AuthContext.Provider>
   )
