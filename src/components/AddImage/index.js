@@ -5,10 +5,10 @@ import './styles.scss'
 import { ImageService } from '../../services/fileServices'
 
 export function AddImages ({ palavra }) {
-  const palavraTeste = {
-    id_palavra: 50000,
-    nome: 'Îagûara'
-  }
+  // const palavraTeste = {
+  //   id_palavra: 50000,
+  //   nome: 'Îagûara'
+  // }
   const { register, handleSubmit } = useForm()
 
   const onSubmit = async (data) => {
