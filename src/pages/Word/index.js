@@ -5,6 +5,7 @@ import Styles from './styles/customStylesSelect'
 import { useLanguage } from '../../context'
 import submitWord from './ServiceWord'
 import './styles.scss'
+import { toast } from 'react-toastify'
 
 export function Word () {
   const [value, setValue] = useState([])
@@ -36,7 +37,7 @@ export function Word () {
         if (!value.map((item) => item.label).includes(inputValue)) {
           setValue([...value, createOption(inputValue)])
         } else {
-          alert('Palavra já adicionada')
+          toast.warn('Palavra já adicionada')
         }
         event.preventDefault()
     }
@@ -57,7 +58,7 @@ export function Word () {
     palavras.forEach(async (item, index) => {
       await submitWord({ palavra: data.palavra[index], significado: data.significado[index], idLingua: data.idLingua })
     })
-    alert('Palavra adicionada com sucesso')
+    toast.success('Palavra adicionada com sucesso')
     setValue([])
     setSelected(null)
   }

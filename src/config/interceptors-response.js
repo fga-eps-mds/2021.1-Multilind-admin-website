@@ -7,7 +7,7 @@ export const setUpInterceptorResponse = (apiInstance) => {
       return response
     },
     (error) => {
-      toast.error(error.response.data?.message || 'Oops, algo deu errado', { theme: 'colored' })
+      toast.error(error.response?.data?.message || 'Oops, algo deu errado', { theme: 'colored' })
       return Promise.reject(error)
     }
   )
