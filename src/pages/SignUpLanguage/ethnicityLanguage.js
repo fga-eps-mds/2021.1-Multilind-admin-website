@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import CreatableSelect from 'react-select/creatable'
-import { Card } from '../../components'
+import { Card, NavBar } from '../../components'
 import { useHistory, useLocation } from 'react-router-dom'
 import { useEthnicity } from '../../context'
 import Styles from './styles/customStylesSelect'
@@ -24,6 +24,8 @@ export function EthnicityLanguage () {
   }
   const list = Ethnicity.map(eth => ({ value: eth.id_etnia, label: eth.nome }))
   return (
+    <div>
+      <NavBar/>
     <div className="container">
       <Card className="card-language">
         <form className="form" id={formId} onSubmit={handleSubmit}>
@@ -42,11 +44,12 @@ export function EthnicityLanguage () {
               options={list}
               styles={Styles}
               isMulti
-            />
+              />
           </div>
           <button type="submit" form={formId} className="button-next-page button-primary button-go">{'Salvar'}</button>
         </form>
       </Card>
+    </div>
     </div>
   )
 }

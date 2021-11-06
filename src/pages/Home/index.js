@@ -1,6 +1,7 @@
-import { useAuth } from '../../context'
+import { NavBar } from '../../components'
 
 export function Home () {
-  const { user } = useAuth()
-  return <h1>Bem vindo, {user.name}!</h1>
+  return <>
+    <NavBar/>
+  </>
 }
