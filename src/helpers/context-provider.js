@@ -3,7 +3,6 @@ import { LanguageContextProvider, TrunkContextProvider, EthnicityContextProvider
 export function ContentProvider ({ children }) {
   const { isLogged } = useAuth()
 
-  console.log(isLogged)
   if (!isLogged) {
     return children
   }

@@ -36,7 +36,7 @@ exemplo:
 
 ```env
 REACT_APP_AUTH_URL=http://localhost:3333/api/auth
-REACT_APP_CONTENT_URL=http://localhost:5000
+REACT_APP_CONTENT_URL=http://localhost:8000
 ```
 
 
