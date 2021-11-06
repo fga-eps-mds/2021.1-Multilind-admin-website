@@ -3,12 +3,9 @@ import { Card } from '../Card'
 import { useForm } from 'react-hook-form'
 import './styles.scss'
 import { ImageService } from '../../services/fileServices'
+import { toast } from 'react-toastify'
 
 export function AddImages ({ palavra }) {
-  // const palavraTeste = {
-  //   id_palavra: 50000,
-  //   nome: 'Îagûara'
-  // }
   const { register, handleSubmit } = useForm()
 
   const onSubmit = async (data) => {
@@ -16,7 +13,7 @@ export function AddImages ({ palavra }) {
     formData.append('file', data.picture[0])
     const result = await ImageService.create(palavra.id_palavra, formData)
     if (result.status === 200) {
-      alert('Imagem adicionada com sucesso!')
+      toast.success('Imagem adicionada com sucesso!')
     }
   }
   return (
