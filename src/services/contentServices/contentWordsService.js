@@ -1,8 +1,8 @@
 import { apiContent } from '../../config'
 
 export class ContentWordService {
-  static async getAllWords () {
-    const response = await apiContent.get('palavra/')
+  static async getAllWords (idLingua) {
+    const response = await apiContent.get(`palavra/all/${idLingua}`)
     return response.data
   }
 

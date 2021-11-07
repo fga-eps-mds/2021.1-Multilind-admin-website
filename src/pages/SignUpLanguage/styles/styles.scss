@@ -1,8 +1,9 @@
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 100%;
   width: 100vw;
 }
 
@@ -309,7 +310,7 @@
 }
 .ReactTags__tagInput input.ReactTags__tagInputField,
 .ReactTags__tagInput input.ReactTags__tagInputField:focus {
-  height: 31px;
+  min-height: 42px;
   margin: 0;
   margin-bottom: 2%;
   font-size: 12px;

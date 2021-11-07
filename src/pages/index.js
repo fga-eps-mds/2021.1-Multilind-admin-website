@@ -1,5 +1,6 @@
 export { Login } from './Login'
 export { Word } from './Word'
 export { Home } from './Home'
+export { AddImages } from './AddImage'
 export { SignUpLanguage } from './SignUpLanguage'
 export { EthnicityLanguage } from './SignUpLanguage/ethnicityLanguage'

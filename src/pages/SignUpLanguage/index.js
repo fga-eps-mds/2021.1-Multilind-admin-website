@@ -58,9 +58,8 @@ export function SignUpLanguage () {
     setTags(newTags)
   }
   return (
-    <div>
-      <NavBar/>
     <div className="container">
+      <NavBar lang={true}/>
       <Card className="card-language">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="dot-container">
@@ -89,9 +88,11 @@ export function SignUpLanguage () {
               </div>
             </div>
             <label className="obs-localidade">
-              O valor deve ser informado em coordenadas e possuir fomato [latitude],
+              - O valor deve ser informado em coordenadas e possuir fomato [latitude],
             [longitude]
             </label>
+            <br/>
+            <label className='obs-palavra'>{'- Pressione a tecla "enter" para adicionar'}</label>
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Família Linguística</label>
@@ -108,6 +109,5 @@ export function SignUpLanguage () {
         </form>
       </Card>
     </div>
-  </div>
   )
 }

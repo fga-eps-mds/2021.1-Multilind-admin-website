@@ -26,9 +26,8 @@ export function EthnicityLanguage () {
   }
   const list = Ethnicity.map(eth => ({ value: eth.id_etnia, label: eth.nome }))
   return (
-    <div>
-      <NavBar/>
       <div className="container">
+        <NavBar lang={true}/>
         {!popUp
           ? <Card className="card-language">
           <form className="form" id={formId} onSubmit={handleSubmit}>
@@ -58,6 +57,5 @@ export function EthnicityLanguage () {
             />
         }
         </div>
-    </div>
   )
 }
