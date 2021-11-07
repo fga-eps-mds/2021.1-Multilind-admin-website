@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Login, Home, SignUpLanguage, EthnicityLanguage } from '../pages'
-import { FeedbackRegistration } from '../components'
+import { Login, Home, SignUpLanguage, EthnicityLanguage, Word } from '../pages'
 import { PrivateRoute } from './routes-protected'
 
 export function Routes () {
@@ -11,7 +10,7 @@ export function Routes () {
                 <PrivateRoute component={EthnicityLanguage} path="/langEth"/>
                 <PrivateRoute component={SignUpLanguage} path="/lang" />
                 <Route component={Login} path="/login" />
-                <Route component={FeedbackRegistration} path="/popup"/>
+                <Route component={Word} path="/word" />
             </Switch>
         </BrowserRouter>
   )
