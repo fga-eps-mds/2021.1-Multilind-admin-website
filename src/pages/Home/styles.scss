@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+  flex-direction: column;
 
   .home-card-content{
     min-height: 74.43946188340807vh;
