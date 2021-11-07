@@ -58,7 +58,7 @@ export function Word () {
         return null
       }
       return object
-    }).filter(e => e !== null)
+    }).filter(wordOfData => wordOfData !== null)
     if (!data.length) {
       toast.warn('Formato inválido')
       setValue([])
