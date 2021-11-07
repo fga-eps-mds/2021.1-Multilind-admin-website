@@ -19,6 +19,7 @@ export function AddImages () {
     const response = await ContentWordService.getAllWords(idLingua.value)
     const wordsMap = response.palavras.map((word) => ({ value: word.id_palavra, label: word.nome }))
     setWords(wordsMap)
+    setSelectedWord({})
   }
 
   const onSubmit = async (data) => {
@@ -49,13 +50,16 @@ export function AddImages () {
             className="select-image-screen"
             onChange={getAllWord}
             options={list}
+            isSearchable
             placeholder=""
           ></Select>
         <label className="nameImageContainer">Palavra</label>
           <Select
             className="select-image-screen"
+            value={selectedWord}
             onChange={setSelectedWord}
             options={words}
+            isSearchable
             placeholder=""
           ></Select>
         <label className="nameImageContainer">Imagem Relativa</label>
