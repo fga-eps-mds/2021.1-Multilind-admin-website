@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import CreatableSelect from 'react-select/creatable'
-import { Card } from '../../components'
+import { Card, NavBar } from '../../components'
 import Styles from './styles/customStylesSelect'
 import { useLanguage } from '../../context'
 import submitWord from './ServiceWord'
@@ -43,27 +43,37 @@ export function Word () {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const palavras = value.map((item) => {
-      item = item.value.split(',', 1)[0]
-      return item.includes(' ') ? item.replaceAll(' ', '') : item
-    })
-    const significados = value.map((item) => {
-      item = item.value.split(',', 2)[1]
-      return item.includes(' ') ? item.replaceAll(' ', '') : item
-    })
 
-    const data = { palavra: [...palavras], significado: [...significados], idLingua: selected.value }
-    palavras.forEach(async (item, index) => {
-      await submitWord({ palavra: data.palavra[index], significado: data.significado[index], idLingua: data.idLingua })
-    })
+    const data = value.map((item) => {
+      const stringSplit = item.value.split(',')
+      const object = {
+        palavra: stringSplit[0].trim(),
+        significado: stringSplit[1].trim(),
+        idLingua: selected.value
+      }
+      if (stringSplit.length !== 2 || !object.palavra.length || !object.significado.length) {
+        toast.warn(`Formato inválido ${item.value}`)
+        return null
+      }
+      return object
+    }).filter(wordOfData => wordOfData !== null)
+    if (!data.length) {
+      toast.warn('Não foi possível adicionar')
+      setValue([])
+      return
+    }
+    await Promise.all(data.map(async (item) => {
+      submitWord(item)
+    }))
     toast.success('Palavra adicionada com sucesso')
     setValue([])
-    setSelected(null)
   }
 
   return (
+    <div>
+      <NavBar/>
     <div className='container label'>
       <Card className='card-language'>
         <form className='form' id={formId} onSubmit={handleSubmit} >
@@ -100,6 +110,7 @@ export function Word () {
           <button type='submit' form={formId} className='button-next-page button-primary button-go'>{'Salvar'}</button>
         </form>
       </Card>
+    </div>
     </div>
   )
 }
