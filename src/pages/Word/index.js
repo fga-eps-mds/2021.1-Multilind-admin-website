@@ -54,13 +54,13 @@ export function Word () {
         idLingua: selected.value
       }
       if (stringSplit.length !== 2 || !object.palavra.length || !object.significado.length) {
-        toast.warn('Formato inválido')
+        toast.warn(`Formato inválido ${item.value}`)
         return null
       }
       return object
     }).filter(wordOfData => wordOfData !== null)
     if (!data.length) {
-      toast.warn('Formato inválido')
+      toast.warn('Não foi possível adicionar')
       setValue([])
       return
     }
