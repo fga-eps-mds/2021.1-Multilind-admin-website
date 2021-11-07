@@ -14,9 +14,11 @@ export function AuthContextProvider ({ children }) {
     const response = await AuthService.login(userCredentials)
     setUser(nomalizeAuthRespose(response))
   }
-
+  const signOut = () => {
+    setUser(null)
+  }
   return (
-        <AuthContext.Provider value={{ user, isLogged: checkUser(), signIn }}>
+        <AuthContext.Provider value={{ user, isLogged: checkUser(), signIn, signOut }}>
             {children}
         </AuthContext.Provider>
   )

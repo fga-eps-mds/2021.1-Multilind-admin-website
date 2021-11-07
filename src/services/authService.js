@@ -6,8 +6,8 @@ export class AuthService {
     return response.data
   }
 
-  static async logout () {
-    const respose = await apiAuth.delete('/logout')
+  static async logout (params) {
+    const respose = await apiAuth.delete('/logout', { data: params })
     return respose.data
   }
 

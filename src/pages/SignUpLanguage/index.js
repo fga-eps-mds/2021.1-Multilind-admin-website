@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { WithContext as ReactTags } from 'react-tag-input'
 import CreatableSelect from 'react-select/creatable'
 import Styles from './styles/customStylesSelect'
-import { Card } from '../../components'
+import { Card, NavBar } from '../../components'
 import { useTrunk } from '../../context'
 import { useHistory } from 'react-router-dom'
 import './styles/styles.scss'
@@ -58,6 +58,8 @@ export function SignUpLanguage () {
     setTags(newTags)
   }
   return (
+    <div>
+      <NavBar/>
     <div className="container">
       <Card className="card-language">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -106,5 +108,6 @@ export function SignUpLanguage () {
         </form>
       </Card>
     </div>
+  </div>
   )
 }
