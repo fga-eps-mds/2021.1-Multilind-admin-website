@@ -72,9 +72,8 @@ export function Word () {
   }
 
   return (
-    <div>
-      <NavBar/>
     <div className='container label'>
+      <NavBar word={true}/>
       <Card className='card-language'>
         <form className='form' id={formId} onSubmit={handleSubmit} >
           <h2 className="Header-screen">Cadastro Palavra</h2>
@@ -105,12 +104,15 @@ export function Word () {
               menuIsOpen={false}
               isMulti
             />
-            <label className='obs-palavra'>{'Inserir palavra seguido de uma vírgula e seu significado. Exemplo: "palavra, significado"'}</label>
+            <div className='obs-palavra'>
+              <label>{'- Inserir palavra seguido de uma vírgula e seu significado. Exemplo: "palavra, significado"'}</label>
+              <br/>
+              <label>{'- Pressione a tecla "enter" para adicionar'}</label>
+            </div>
           </div>
           <button type='submit' form={formId} className='button-next-page button-primary button-go'>{'Salvar'}</button>
         </form>
       </Card>
-    </div>
     </div>
   )
 }

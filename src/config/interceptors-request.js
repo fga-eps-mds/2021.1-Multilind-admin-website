@@ -5,7 +5,7 @@ import { AUTH_USER_KEY } from '../utils'
 
 const interceptorRequestInstances = {}
 
-export const setUpInterceptorRequest = (apiInstance) => {
+export const setUpInterceptorRequest = (apiInstance, instanceName) => {
   const interceptorId = apiInstance.interceptors.request.use(
     async (request) => {
       const user = OfflineStorageService.getItem(AUTH_USER_KEY)
@@ -34,12 +34,12 @@ export const setUpInterceptorRequest = (apiInstance) => {
     }
   )
 
-  interceptorRequestInstances[apiInstance] = interceptorId
+  interceptorRequestInstances[instanceName] = interceptorId
 }
 
-export const removeInterceptorRequest = (apiInstance) => {
+export const removeInterceptorRequest = (apiInstance, instanceName) => {
   if (interceptorRequestInstances[apiInstance] !== undefined) {
-    const interceptorId = interceptorRequestInstances[apiInstance]
+    const interceptorId = interceptorRequestInstances[instanceName]
     apiInstance.interceptors.request.eject(interceptorId)
     interceptorRequestInstances[apiInstance] = undefined
   }

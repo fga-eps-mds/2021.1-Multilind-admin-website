@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+  flex-direction: column;
 
   .home-card-content{
     min-height: 74.43946188340807vh;
@@ -28,10 +29,10 @@
     }
     .home-container-button{
       width: 90%; 
-      height: 150px;
+      height: 200px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   }
 }

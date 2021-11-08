@@ -5,7 +5,7 @@ import { AuthService } from '../../services'
 import { useHistory } from 'react-router-dom'
 import './styles.scss'
 
-export function NavBar () {
+export function NavBar (props) {
   const history = useHistory()
   const { user, signOut } = useAuth()
   const logoutUser = async () => {
@@ -16,8 +16,18 @@ export function NavBar () {
   return (
         <div className="nav-bar">
           <img src={logo} alt="logo" className="logo-nav-bar" onClick={() => history.push('/')}/>
-            <h1 className="links-nav-bar" onClick={() => history.push('/lang') }>Cadastrar Lingua</h1>
-            <h1 className="links-nav-bar" onClick={() => history.push('/word') }>Cadastrar Palavra</h1>
+          { !props.home && !props.lang
+            ? <h1 className="links-nav-bar" onClick={() => history.push('/lang')}>Cadastrar Lingua</h1>
+            : null
+          }
+          {!props.home && !props.word
+            ? <h1 className="links-nav-bar" onClick={() => history.push('/word')}>Cadastrar Palavra</h1>
+            : null
+          }
+          {!props.home && !props.image
+            ? <h1 className="links-nav-bar" onClick={() => history.push('/image')}>Cadastrar Imagem</h1>
+            : null
+          }
           <img src={logout} alt="logo" className="logout-nav-bar" onClick={() => logoutUser()}/>
         </div>
   )
