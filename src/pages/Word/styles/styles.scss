@@ -1,9 +1,9 @@
 .container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
   height: 100%;
+  flex-direction: column;
   width: 100vw;
 }
 
@@ -32,13 +32,6 @@
     width: 8rem;
   }
   .obs-localidade {
-    font-style: normal;
-    font-weight: 31.25rem;
-    font-size: 0.875rem;
-    text-align: justify;
-    margin-top: 3.46vh;
-  }
-  .obs-palavra {
     font-style: normal;
     font-weight: 31.25rem;
     font-size: 0.875rem;
@@ -310,7 +303,7 @@
 }
 .ReactTags__tagInput input.ReactTags__tagInputField,
 .ReactTags__tagInput input.ReactTags__tagInputField:focus {
-  min-height: 42px;
+  height: 31px;
   margin: 0;
   margin-bottom: 2%;
   font-size: 12px;

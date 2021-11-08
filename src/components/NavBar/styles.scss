@@ -1,0 +1,29 @@
+.nav-bar{
+  max-height: 115px;
+  width: 100%;
+  // background: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo-nav-bar{
+    cursor: pointer; 
+    height: 82px;
+    width: 82px;
+    margin-left: 2%;
+  }
+
+  .links-nav-bar{
+    cursor: pointer; 
+    font-size: 20px;
+    text-decoration: underline;
+  }
+  
+  .logout-nav-bar{
+    cursor: pointer; 
+    height: 24px;
+    width: 31.5px;
+    margin-right: 2%;
+  }
+}

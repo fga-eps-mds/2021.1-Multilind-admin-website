@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { WithContext as ReactTags } from 'react-tag-input'
 import CreatableSelect from 'react-select/creatable'
 import Styles from './styles/customStylesSelect'
-import { Card } from '../../components'
+import { Card, NavBar } from '../../components'
 import { useTrunk } from '../../context'
 import { useHistory } from 'react-router-dom'
 import './styles/styles.scss'
@@ -59,6 +59,7 @@ export function SignUpLanguage () {
   }
   return (
     <div className="container">
+      <NavBar lang={true}/>
       <Card className="card-language">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="dot-container">
@@ -87,9 +88,11 @@ export function SignUpLanguage () {
               </div>
             </div>
             <label className="obs-localidade">
-              O valor deve ser informado em coordenadas e possuir fomato [latitude],
+              - O valor deve ser informado em coordenadas e possuir fomato [latitude],
             [longitude]
             </label>
+            <br/>
+            <label className='obs-palavra'>{'- Pressione a tecla "enter" para adicionar'}</label>
           </div>
           <div className="input-language-fields">
             <label className="label-class-language">Família Linguística</label>
