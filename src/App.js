@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Routes } from './routes'
 import { useAuth } from './context'
-import { useUpdateEffect } from './hooks'
 import {
   apiAuth,
   apiContent,
@@ -15,16 +14,17 @@ function App () {
   const { isLogged } = useAuth()
 
   useEffect(() => {
-    setUpInterceptorResponse(apiAuth)
-    setUpInterceptorResponse(apiContent)
-    setUpInterceptorRequest(apiContent)
+    setUpInterceptorResponse(apiAuth, 'apiAuth')
+    return () => removeInterceptorResponse(apiAuth, 'apiAuth')
   }, [])
 
-  useUpdateEffect(() => {
-    if (!isLogged) {
-      removeInterceptorResponse(apiAuth)
-      removeInterceptorResponse(apiContent)
-      removeInterceptorRequest(apiContent)
+  useEffect(() => {
+    if (isLogged) {
+      setUpInterceptorResponse(apiContent, 'apiContent')
+      setUpInterceptorRequest(apiContent, 'apiContent')
+    } else {
+      removeInterceptorResponse(apiContent, 'apiContent')
+      removeInterceptorRequest(apiContent, 'apiContent')
     }
   }, [isLogged])
 
