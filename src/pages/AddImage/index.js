@@ -33,7 +33,7 @@ export function AddImages () {
     }
     const formData = new FormData()
     formData.append('file', data.picture[0])
-    const result = await ImageService.create(50000, formData)
+    const result = await ImageService.create(words.id_palavra, formData)
     if (result.status === 200) {
       toast.success('Imagem adicionada com sucesso!')
     }
